@@ -18,4 +18,4 @@ var campgroundSchema = new mongoose.Schema({
 }, {
     usePushEach: true
 });
-module.exports = mongoose.model("campgrounds", campgroundSchema);
+module.exports = mongoose.model("restaurants123", campgroundSchema);

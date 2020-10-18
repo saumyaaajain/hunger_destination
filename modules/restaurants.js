@@ -5,7 +5,7 @@ var restaurantsSchema = new mongoose.Schema({
     description: String,
     menuItems: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "menuItem",
+        ref: "menuItems",
     }],
     author: {
         username: String,

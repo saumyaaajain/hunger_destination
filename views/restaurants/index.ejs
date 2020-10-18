@@ -7,20 +7,20 @@
             One stop for all your hunger needs!
             </p>
             <p>
-                <a class="btn btn-primary btn-lg" href="/campgrounds/new">Add New Campground <span class="glyphicon glyphicon-fir" aria-hidden="true"></span> </a>
+<!--                <a class="btn btn-primary btn-lg" href="/restaurants/new">Add New Resataurant <span class="glyphicon glyphicon-fir" aria-hidden="true"></span> </a>-->
             </p>
         </div>
     </header>
     <div class="row text-center" style="display:flex; flex-wrap: wrap;">
-        <% campgrounds.forEach(function(campground){ %>
+        <% restaurants.forEach(function(restaurant){ %>
             <div class="col-md-3 col-sm-6">
                 <div class="thumbnail">
-<!--                   <img src="<%= campground.image %>">-->
+<!--                   <img src="<%= restaurant.image %>">-->
                    <div class="caption">
-                       <h4><%= campground.title %></h4>
+                       <h4><%= restaurant.title %></h4>
                    </div>
                    <p>
-                       <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">Order now</a>
+                       <a href="/restaurants/<%= restaurant._id %>" class="btn btn-primary">Order now</a>
                    </p>
                 </div>
             </div>

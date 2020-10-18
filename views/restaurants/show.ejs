@@ -1,0 +1,56 @@
+<% if(restaurant){ %>
+<% include ../partials/header %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="thumbnail">
+                <img class="img-responsive" src="<%=restaurant.image%>">
+                <div class=caption-full>
+                    <h2><a href=""><%=restaurant.title%></a></h2>
+                    <p> <%=restaurant.description%> </p>
+                    <p>Submitted by <em><%=restaurant.author.username%></em></p>
+                     <%if(currentUser && restaurant.author.id.equals(currentUser._id) && currentUser.userType === "admin"){%>
+                    <form action="/restaurants/<%=restaurant._id%>?_method=DELETE" method="POST">
+                        <button class="btn btn-danger pull-right">Delete</button>
+                    </form>
+                    <a href="/restaurants/<%=restaurant._id%>/edit" class="btn btn-default btn-primary">Edit</a>
+                    <% } %>
+                   
+                </div>
+            </div>
+            <div class="well">
+                <% if(currentUser && restaurant.author.id.equals(currentUser._id) && currentUser.userType === "admin"){%>
+                    <div class="text-right">
+                        <a class="btn btn-success" href="/restaurants/<%=restaurant._id%>/menuItems/new">Add New menuItems</a>
+                    </div>
+                <%}%>
+                <hr>
+                <%restaurant.menuItems.forEach(function(menuItems){%>
+                <div class="row">
+                    <div class="col-md-12">
+                        <strong><%=menuItems.author.username%></strong>
+                        <span class="pull-right">
+                            <h4>Rs<%=restaurant.price%></h4>
+                        </span>
+                        <%=moment().toISOString()%>
+                        <p>
+                            <%=menuItems.text%>
+                        </p>  
+                        <%if(currentUser&&menuItems.author.id.equals(currentUser._id) && currentUser.userType === "admin"){%>
+                    <form action="/restaurants/<%=restaurant._id%>/menuItems/<%=menuItems._id%>?_method=DELETE" method="POST">
+                        <button class="btn btn-danger pull-right">Delete</button>
+                    </form>
+                        <a href="/restaurants/<%=restaurant.id%>/menuItems/<%=menuItems._id%>/edit" class="btn btn-info">Edit</a>
+                        <% } %>
+                    </div>
+                </div>
+                <% })%>
+            </div>
+        </div>
+    </div>
+</div>
+<% include ../partials/footer %>
+
+<% }else{%>
+<h1>restaurant not found</h1>
+ <% }%>

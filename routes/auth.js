@@ -30,8 +30,8 @@ router.post("/register",function(req, res) {
         else
         {
             passport.authenticate("local")(req,res,function(){
-                req.flash("success","Welcome to YelpCamp "+user.username);
-                res.redirect("/campgrounds");
+                req.flash("success","Welcome to FoodShala "+user.username);
+                res.redirect("/restaurants");
             })
         }
     })
@@ -54,8 +54,8 @@ router.post("/register_admin",function(req, res) {
         else
         {
             passport.authenticate("local")(req,res,function(){
-                req.flash("success","Welcome to YelpCamp "+user.username);
-                res.redirect("/campgrounds");
+                req.flash("success","Welcome to FoodShala "+user.username+ "please fill the details of your restaurant");
+                res.redirect("/restaurants/new");
             })
         }
     })
@@ -70,7 +70,7 @@ router.get("/login",function(req, res) {
 })
 //login
 router.post("/login",passport.authenticate("local",{
-    successRedirect:"/campgrounds",
+    successRedirect:"/restaurants",
     failureRedirect:"/login",
     successFlash:"Successfully Logged in",
     failureFlash:"Incorrect username or password"
@@ -82,7 +82,7 @@ router.post("/login",passport.authenticate("local",{
 router.get("/logout",function(req, res) {
     req.logout();
     req.flash("success","Logged you out");
-    res.redirect("/campgrounds");
+    res.redirect("/restaurants");
 })
 
 

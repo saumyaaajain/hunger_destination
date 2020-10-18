@@ -1,8 +1,6 @@
 var express = require("express")(),
     mongoose = require("mongoose"),
     bodyparser = require("body-parser"),
-    campground = require("./modules/campgrounds"),
-    comment = require("./modules/comments"),
     passport = require("passport"),
     User = require("./modules/user"),
     localstrategy = require("passport-local"),
@@ -12,9 +10,9 @@ var express = require("express")(),
     cp = require("cookie-parser")
     seedDB = require("./seeds");
 
-var commentRoutes = require("./routes/comments"),
+var menuItemRoutes = require("./routes/menuItems"),
     indexRoutes = require("./routes/auth"),
-    campgroundRoutes = require("./routes/campgrounds");
+    restaurantRoutes = require("./routes/restaurants");
 
 //seedDB();
 express.use(cp());
@@ -48,10 +46,10 @@ express.use(function(req, res, next) {
 })
 
 //requiring routes
-express.use("/campgrounds/:id/comments", commentRoutes);
+express.use("/restaurants/:id/menuItems", menuItemRoutes);
 express.use(indexRoutes);
-express.use("/campgrounds", campgroundRoutes);
+express.use("/restaurants", restaurantRoutes);
 
 express.listen(3000, function() {
-    console.log("Started YelpCamp server....");
+    console.log("Started FoodShala server at 3000");
 })

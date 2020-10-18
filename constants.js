@@ -1,2 +1,3 @@
 const itemTypes = ['Snacks', 'Drinks', 'Appetizer', 'Main Course', 'Desserts', 'Breakfast'];
-export {itemTypes};
+// export {itemTypes};
+module.exports = itemTypes;

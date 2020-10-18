@@ -1,19 +1,19 @@
 //all middlewares goes here
-var campground=require("../modules/campgrounds");
-var comment=require("../modules/comments");
+var restaurant=require("../modules/restaurants");
+var menuId=require("../modules/menuItems");
 var middlewareObj={};
-middlewareObj.isCampgroundAuthorised=function(req,res,next){
+middlewareObj.isRestaurantAuthorised=function(req,res,next){
     if(req.isAuthenticated())
     {
-            campground.findById(req.params.id,function(err,foundCampground){
+            restaurant.findById(req.params.id,function(err,foundRestaurant){
             if(err)
             {
-                req.flash("error","Campground Not Found");  
+                req.flash("error","Restaurant Not Found");
                 res.redirect("back");
             }
             else
             {
-                if(foundCampground.author.id.equals(req.user._id))
+                if(foundRestaurant.author.id.equals(req.user._id))
                 {
                     next();
                 }
@@ -35,16 +35,16 @@ middlewareObj.isCampgroundAuthorised=function(req,res,next){
 }
 
 
-middlewareObj.isCommentAuthorised=function(req,res,next){
+middlewareObj.isMenuItemAuthorised=function(req,res,next){
     if(req.isAuthenticated())
     {
-            comment.findById(req.params.comment_id,function(err,foundComment){
+            menuId.findById(req.params.menuId_id,function(err,foundComment){
             if(err)
             console.log(err);
             else
             {
                 console.log(foundComment.author.id);
-                if(foundComment.author.id.equals(req.user._id))
+                if(req.userType === "admin" && foundComment.author.id.equals(req.user._id))
                 {
                     next();
                 }

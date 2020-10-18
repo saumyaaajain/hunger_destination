@@ -1,6 +1,6 @@
 var mongoose=require("mongoose");
 const {itemTypes} = require("../constants");
-var menuItem=mongoose.Schema({
+var menuItems=mongoose.Schema({
     text:String,
     price: String,
     type: {
@@ -19,4 +19,4 @@ var menuItem=mongoose.Schema({
     timestamps : true
 })
 
-module.exports=mongoose.model("menuItem",menuItem);
+module.exports=mongoose.model("menuItems",menuItems);
