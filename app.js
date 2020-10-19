@@ -50,6 +50,6 @@ express.use("/restaurants/:id/menuItems", menuItemRoutes);
 express.use(indexRoutes);
 express.use("/restaurants", restaurantRoutes);
 
-express.listen(3000, function() {
+express.listen(process.env.PORT || 3000, function() {
     console.log("Started FoodShala server at 3000");
 })
