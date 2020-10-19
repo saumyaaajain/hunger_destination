@@ -38,13 +38,13 @@ middlewareObj.isRestaurantAuthorised=function(req,res,next){
 middlewareObj.isMenuItemAuthorised=function(req,res,next){
     if(req.isAuthenticated())
     {
-            menuId.findById(req.params.menuId_id,function(err,foundComment){
+            menuId.findById(req.params.menuItem_id,function(err,foundComment){
             if(err)
             console.log(err);
             else
             {
-                console.log(foundComment.author.id);
-                if(req.userType === "admin" && foundComment.author.id.equals(req.user._id))
+                // console.log(foundComment.author.id);
+                if(req.user.userType === "admin" && foundComment.author.id.equals(req.user._id))
                 {
                     next();
                 }

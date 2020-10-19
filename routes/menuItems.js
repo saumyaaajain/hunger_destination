@@ -25,7 +25,7 @@ router.post("/", middleware.isLoggedIn, function(req, res) {
             console.log(err);
             res.redirect("/restaurants");
         } else {
-            menuItem.create(req.body.menuItem, function(err, menuItem) {
+            menuItem.create(req.body.menuItems, function(err, menuItem) {
                 console.log(menuItem)
                 if (err) {
                     req.flash("error", "Something went wrong!")
@@ -58,7 +58,7 @@ router.get("/:menuItem_id/edit", middleware.isMenuItemAuthorised, function(req, 
             console.log(err);
         else {
 
-            res.render("menuItems/edit", { menuItem: foundMenuItem, restaurant_id: req.params.id });
+            res.render("menuItems/edit", { menuItems: foundMenuItem, restaurant_id: req.params.id });
         }
 
     })
