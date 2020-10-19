@@ -20,7 +20,7 @@ express.set("view engine", "ejs");
 express.use(bodyparser.urlencoded({ extended: true }));
 
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb+srv://user:pass@cluster0.9sxex.mongodb.net/db?retryWrites=true&w=majority", { useMongoClient: true })
+mongoose.connect(process.env.DB_URL)
     //mongoose.connect("mongodb://localhost/yelpcamp", { useMongoClient: true });
 express.use(require("express").static("public"));
 express.use(methodOverride("_method"));
