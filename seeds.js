@@ -1,6 +1,6 @@
 var mongoose=require("mongoose");
-var campground=require("./modules/campgrounds");
-var comment=require("./modules/comments")
+var campground=require("./modules/restaurants");
+var comment=require("./modules/menuItems")
 var data=[
     {title:"Desert mela",image:"https://farm3.staticflickr.com/2630/4089140779_fc5cd0c694.jpg",description:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad quod culpa voluptatibus expedita, consectetur, deleniti eum saepe asperiores eius eaque minus! Rerum, odio ullam delectus magni. Corrupti, unde. Consequuntur, ipsum?"},
     {title:"Car mela",image:"https://farm7.staticflickr.com/6014/6015893151_044a2af184.jpg",description:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad quod culpa voluptatibus expedita, consectetur, deleniti eum saepe asperiores eius eaque minus! Rerum, odio ullam delectus magni. Corrupti, unde. Consequuntur, ipsum?"},
